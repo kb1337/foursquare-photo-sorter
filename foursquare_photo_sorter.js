@@ -2,11 +2,11 @@ function formatDate(myDate) {
 	let month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	let date_days_ago = myDate.match(/([0-9]*) day/);
 	let date_weeks_ago = myDate.match(/([0-9]*) week/);
-	let date_long = myDate.match(/(.*)\s([0-9]*),\s([0-9]*)/);
-	let date_short = myDate.match(/(.*)\s([0-9]*)/);
+	const date_long = myDate.match(/(.*)\s([0-9]*),\s([0-9]*)/);
+	const date_short = myDate.match(/(.*)\s([0-9]*)/);
 
-	let url = document.URL;
-	let lang = url.match(/([a-zA-Z]*).foursquare/);
+	const url = document.URL;
+	const lang = url.match(/([a-zA-Z]*).foursquare/);
 
 	if (lang[1] == 'tr') {
 		month_names = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
@@ -46,7 +46,7 @@ function formatDate(myDate) {
 }
 
 function sortPhotos() {
-	let photos = document.getElementsByClassName("photo");
+	const photos = document.getElementsByClassName("photo");
 	let photo_list = [];
 	for (const photo of photos) {
 		if (photo.id) {
@@ -66,7 +66,7 @@ function sortPhotos() {
 function rearrangeDivs() {
 	let sorted_photos = sortPhotos();
 	let photos_block = document.getElementsByClassName("photosBlock")[0];
-	let show_more = document.getElementsByClassName("startAutoLoad")[0];
+	const show_more = document.getElementsByClassName("startAutoLoad")[0];
 
 	photos_block.innerHTML = '';
 
