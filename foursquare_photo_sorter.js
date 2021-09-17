@@ -1,12 +1,12 @@
 function formatDate(myDate) {
-	var month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var date_days_ago = myDate.match(/([0-9]*) day/);
-	var date_weeks_ago = myDate.match(/([0-9]*) week/);
-	var date_long = myDate.match(/(.*)\s([0-9]*),\s([0-9]*)/);
-	var date_short = myDate.match(/(.*)\s([0-9]*)/);
+	let month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	let date_days_ago = myDate.match(/([0-9]*) day/);
+	let date_weeks_ago = myDate.match(/([0-9]*) week/);
+	let date_long = myDate.match(/(.*)\s([0-9]*),\s([0-9]*)/);
+	let date_short = myDate.match(/(.*)\s([0-9]*)/);
 
-	var url = document.URL;
-	var lang = url.match(/([a-zA-Z]*).foursquare/);
+	let url = document.URL;
+	let lang = url.match(/([a-zA-Z]*).foursquare/);
 
 	if (lang[1] == 'tr') {
 		month_names = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
@@ -15,14 +15,14 @@ function formatDate(myDate) {
 	}
 
 	if (date_days_ago) {
-		var d = new Date();
+		let d = new Date();
 		d.setDate(d.getDate() - parseInt(date_days_ago[1]));
 		year = d.getFullYear();
 		month = d.getMonth();
 		day = d.getDate();
 	}
 	else if (date_weeks_ago) {
-		var d = new Date();
+		let d = new Date();
 		d.setDate(d.getDate() - parseInt(date_weeks_ago[1]) * 7);
 		year = d.getFullYear();
 		month = d.getMonth();
@@ -39,15 +39,15 @@ function formatDate(myDate) {
 		day = date_short[2];
 	}
 	else {
-		var year = 3000, month = 1, day = 1;
+		let year = 3000, month = 1, day = 1;
 	}
 
 	return new Date(year, month, parseInt(day) + 1).toISOString().slice(0, 10);
 }
 
 function sortPhotos() {
-	var photos = document.getElementsByClassName("photo");
-	var photo_list = [];
+	let photos = document.getElementsByClassName("photo");
+	let photo_list = [];
 	for (const photo of photos) {
 		if (photo.id) {
 			date = photo.getElementsByClassName("date")[0].innerText;
@@ -64,9 +64,9 @@ function sortPhotos() {
 }
 
 function rearrangeDivs() {
-	var sorted_photos = sortPhotos();
-	var photos_block = document.getElementsByClassName("photosBlock")[0];
-	var show_more = document.getElementsByClassName("startAutoLoad")[0];
+	let sorted_photos = sortPhotos();
+	let photos_block = document.getElementsByClassName("photosBlock")[0];
+	let show_more = document.getElementsByClassName("startAutoLoad")[0];
 
 	photos_block.innerHTML = '';
 
